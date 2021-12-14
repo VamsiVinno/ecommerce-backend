@@ -22,7 +22,6 @@ router.get("/product/:range", (req, res) => {
   let dataRange;
   let product =[];
   db.product.findAll().then((data) => {
-    console.log(req.params.range, "========>", typeof req.params.range);
     switch (req.params.range) {
       case "0-500":
         {
@@ -599,8 +598,6 @@ router.post("/placeOrder", (req, res) => {
 });
 
 router.post("/placeCartOrder", (req, res) => {
-  console.log(req.body);
-
   req.body.map((product) => {
     db.order.create({
       product_id: product.productId,
